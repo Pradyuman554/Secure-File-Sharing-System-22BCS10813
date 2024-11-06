@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploaded</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            background-color: #34d399;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8 fade-in">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check-circle fa-2x"></i>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Upload Successful!</h2>
+
+                <p class="text-lg text-gray-600 mb-6">Your file <strong>{{ filename }}</strong> has been uploaded securely.</p>
+
+                <p class="mb-4 text-gray-600">Here is your secure download link. Share it with others to allow them to download the file:</p>
+
+                <div class="bg-gray-100 p-4 rounded-md mb-6">
+                    <a href="{{ download_link }}" class="text-blue-500 break-words">{{ request.url.scheme }}://{{ request.url.netloc }}{{ download_link }}</a>
+                </div>
+
+                <a href="{{ download_link }}" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold shadow-md transition duration-300 ease-in-out download-btn">
+                    Download File <i class="fas fa-download ml-2"></i>
+                </a>
+
+                <div class="mt-6">
+                    <a href="/" class="text-blue-500 hover:underline">Upload Another File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
